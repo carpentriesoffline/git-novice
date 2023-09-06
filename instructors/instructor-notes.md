@@ -233,7 +233,7 @@ particular set of files in `.gitignore`.
   computer at work:
   
   ```bash
-  $ git clone https://github.com/vlad/planets.git planets-at-work
+  $ git clone http://carpentriesoffline.org:3000/vlad/planets.git planets-at-work
   ```
 
 - It's very common that learners mistype the remote alias or the remote URL
@@ -250,7 +250,7 @@ particular set of files in `.gitignore`.
   repo under a given directory using a second argument:
   
   ```bash
-  $ git clone https://github.com/vlad/planets.git vlad-planet
+  $ git clone http://carpentriesoffline.org:3000/vlad/planets.git vlad-planet
   ```
 
 - The most common mistake is that learners `push` before `pull`ing. If they
@@ -270,7 +270,7 @@ particular set of files in `.gitignore`.
 - If you're the only instructor, the best way to create a conflict is:
   
   - Clone your repo in a different directory, pretending is your computer at
-    work: `git clone https://github.com/vlad/planets.git planets-at-work`.
+    work: `git clone http://carpentriesoffline.org:3000/vlad/planets.git planets-at-work`.
   - At the office, you make a change, commit and push.
   - At your laptop repo, you (forget to pull and) make a change, commit and
     try to push.
@@ -309,7 +309,7 @@ software-specific license instead.
 ## [Hosting](../episodes/13-hosting.md)
 
 A common concern for learners is having their work publicly available on
-GitHub.  While we encourage open science, sometimes private repos are the
+Gitea (or later, GitHub).  While we encourage open science, sometimes private repos are the
 only choice. It's always interesting to mention the options to have
 web-hosted private repositories.
 
