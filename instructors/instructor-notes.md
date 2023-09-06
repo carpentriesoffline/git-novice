@@ -40,7 +40,7 @@ working in teams or not, because it is
 
 ## Teaching Notes
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 Note that some of the resources in these notes refer to websites,
 which will not be accessible in the offline setting.
 
@@ -67,7 +67,7 @@ download resources for offline use during the workshop.
   some flavor of Unix, different editors may or may not add a
   newline to the last line of a file.) Take a moment to explain
   these issues, since learners will almost certainly trip over them
-  again.  If learners are running into line ending problems, GitHub
+  again. If learners are running into line ending problems, GitHub
   has a [page][github-line-endings] that helps with troubleshooting.
   Specifically, the [section on refreshing a repository][github-line-endings-refresh]
   may be helpful if learners need to change the `core.autocrlf` setting
@@ -75,7 +75,7 @@ download resources for offline use during the workshop.
 
 - We don't use a Git GUI in these notes because we haven't found one that
   installs easily and runs reliably on the three major operating systems, and
-  because we want learners to understand what commands are being run.  That
+  because we want learners to understand what commands are being run. That
   said, instructors should demo a GUI on their desktop at some point during
   this lesson and point learners at [this page][github-gui].
 
@@ -100,10 +100,10 @@ download resources for offline use during the workshop.
   form of version control.
 
 - Give learners a five-minute overview of what version control does for them
-  before diving into the watch-and-do practicals.  Most of them will have
+  before diving into the watch-and-do practicals. Most of them will have
   tried to co-author papers by emailing files back and forth, or will have
   biked into the office only to realize that the USB key with last night's
-  work is still on the kitchen table.  Instructors can also make jokes about
+  work is still on the kitchen table. Instructors can also make jokes about
   directories with names like "final version", "final version revised",
   "final version with reviewer three's corrections", "really final version",
   and, "come on this really has to be the last version" to motivate version
@@ -122,7 +122,7 @@ download resources for offline use during the workshop.
   another text editor if they're already familiar with it.
 
 - When setting up Git, be very clear what learners have to enter: it is
-  common for them to edit the instructor's details (e.g. email).  Check at
+  common for them to edit the instructor's details (e.g. email). Check at
   the end using `git config --list`.
 
 - When setting up the default branch name, if learners have a Git version
@@ -145,7 +145,7 @@ download resources for offline use during the workshop.
   
   ```bash
   $ mv .git temp_git
-  $ rm -rf  temp_git
+  $ rm -rf temp_git
   ```
   
   The challenge suggests that it is a bad idea to create a Git repo inside another repo.
@@ -160,10 +160,10 @@ download resources for offline use during the workshop.
 - This is a good moment to show a diff with a graphical diff tool. If you
   skip it because you're short on time, show it once in Gitea.
 
-- One thing may cause confusion is recovering old versions.  If, instead of
+- One thing may cause confusion is recovering old versions. If, instead of
   doing `$ git checkout f22b25e mars.txt`, someone does `$ git checkout f22b25e`, they wind up in the "detached HEAD" state and confusion abounds.
-  It's then possible to keep on committing, but things like `git push origin main` a bit later will not give easily comprehensible results.  It also
-  makes it look like commits can be lost.  To "re-attach" HEAD, use
+  It's then possible to keep on committing, but things like `git push origin main` a bit later will not give easily comprehensible results. It also
+  makes it look like commits can be lost. To "re-attach" HEAD, use
   `git checkout main`.
 
 - This is a good moment to show a log within a Git GUI. If you skip it
@@ -200,30 +200,30 @@ particular set of files in `.gitignore`.
 
 - Decide in advance whether all the learners will work in one shared
   repository, or whether they will work in pairs (or other small groups) in
-  separate repositories.  The former is easier to set up; the latter runs
+  separate repositories. The former is easier to set up; the latter runs
   more smoothly.
 
 - Role playing between two instructors can be effective when teaching the
-  collaboration and conflict sections of the lesson.  One instructor can play
+  collaboration and conflict sections of the lesson. One instructor can play
   the role of the repository owner, while the second instructor can play the
-  role of the collaborator.  If it is possible, try to use two projectors so
-  that the computer screens of both instructors can be seen.  This makes for
+  role of the collaborator. If it is possible, try to use two projectors so
+  that the computer screens of both instructors can be seen. This makes for
   a very clear illustration to the students as to who does what.
 
 - It is also effective to pair up students during this lesson and assign one
   member of the pair to take the role of the owner and the other the role of
-  the collaborator.  In this setup, challenges can include asking the
+  the collaborator. In this setup, challenges can include asking the
   collaborator to make a change, commit it, and push the change to the remote
-  repository so that the owner can then retrieve it, and vice-versa.  The
+  repository so that the owner can then retrieve it, and vice-versa. The
   role playing between the instructors can get a bit "dramatic" in the
   conflicts part of the lesson if the instructors want to inject some humor
   into the room.
 
 - If you don't have two projectors, have two instructors at the front of the
-  room.  Each instructor does their piece of the collaboration demonstration
+  room. Each instructor does their piece of the collaboration demonstration
   on their own computer and then passes the projector cord back and forth
   with the other instructor when it's time for them to do the other part of
-  the collaborative workflow.  It takes less than 10 seconds for each
+  the collaborative workflow. It takes less than 10 seconds for each
   switchover, so it doesn't interrupt the flow of the lesson.
   And of course it helps to give each of the instructors a different-colored
   hat, or put different-colored sticky notes on their foreheads.
@@ -273,7 +273,7 @@ particular set of files in `.gitignore`.
     work: `git clone http://carpentriesoffline.org:3000/vlad/planets.git planets-at-work`.
   - At the office, you make a change, commit and push.
   - At your laptop repo, you (forget to pull and) make a change, commit and
-    try to push.
+   try to push.
   - `git pull` now and show the conflict.
 
 - Learners usually forget to `git add` the file after fixing the conflict and
@@ -309,7 +309,7 @@ software-specific license instead.
 ## [Hosting](../episodes/13-hosting.md)
 
 A common concern for learners is having their work publicly available on
-Gitea (or later, GitHub).  While we encourage open science, sometimes private repos are the
+Gitea (or later, GitHub. While we encourage open science, sometimes private repos are the
 only choice. It's always interesting to mention the options to have
 web-hosted private repositories.
 
