@@ -273,7 +273,7 @@ particular set of files in `.gitignore`.
     work: `git clone http://carpentriesoffline.org:3000/vlad/planets.git planets-at-work`.
   - At the office, you make a change, commit and push.
   - At your laptop repo, you (forget to pull and) make a change, commit and
-   try to push.
+    try to push.
   - `git pull` now and show the conflict.
 
 - Learners usually forget to `git add` the file after fixing the conflict and
@@ -309,7 +309,7 @@ software-specific license instead.
 ## [Hosting](../episodes/13-hosting.md)
 
 A common concern for learners is having their work publicly available on
-Gitea (or later, GitHub. While we encourage open science, sometimes private repos are the
+Gitea (or later, GitHub). While we encourage open science, sometimes private repos are the
 only choice. It's always interesting to mention the options to have
 web-hosted private repositories.
 
