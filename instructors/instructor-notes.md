@@ -269,7 +269,7 @@ particular set of files in `.gitignore`.
 
 - If you're the only instructor, the best way to create a conflict is:
   
-  - Clone your repo in a different directory, pretending is your computer at
+  - Clone your repo in a different directory, pretending it is your computer at
     work: `git clone http://carpentriesoffline.org:3000/vlad/planets.git planets-at-work`.
   - At the office, you make a change, commit and push.
   - At your laptop repo, you (forget to pull and) make a change, commit and
