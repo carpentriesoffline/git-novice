@@ -192,8 +192,8 @@ particular set of files in `.gitignore`.
   what leaners execute. The lesson displays the output from git if a learner
   executes `git push origin main`. However, some learners might use syntax
   suggested by Gitea for pushing to a remote with an existing repository,
-  which is `git push -u origin main`. Learners using syntax from Gitea,
-  `git push -u origin main`, will have slightly different output, including
+  which is `git push -u origin main`. Learners using this syntax from Gitea,
+  will have slightly different output, including
   the line `Branch main set up to track remote branch main from origin by rebasing.`
 
 ## [Collaborating](../episodes/08-collab.md)
