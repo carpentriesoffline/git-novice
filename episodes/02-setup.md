@@ -42,18 +42,8 @@ which means that any changes pushed to
 another Git host server
 after this lesson will include this information.
 
-For this lesson, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Keeping your email private
-
-If you elect to use a private email address with GitHub, then use that same email address for the `user.email` value, e.g. `username@users.noreply.github.com` replacing `username` with your GitHub one.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
+For this lesson, we will be interacting with a [Gitea](http://carpentriesoffline.org:3000) instance. Gitea has a similar interface to [GitHub](https://github.com)
+and is running from the Raspberry Pi server.
 
 ## Line Endings
 
@@ -81,8 +71,6 @@ And on Windows:
 ```bash
 $ git config --global core.autocrlf false
 ```
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Dracula also has to set his favorite text editor, following this table:
 
@@ -138,7 +126,7 @@ the racist practice of human slavery and the
 more inclusive language.
 
 In 2020, most Git code hosting services transitioned to using `main` as the default
-branch. As an example, any new repository that is opened in GitHub and GitLab default
+branch. As an example, any new repository that is opened in GitHub, GitLab or Gitea default
 to `main`.  However, Git has not yet made the same change.  As a result, local repositories
 must be manually configured have the same main branch name as most cloud services.
 
@@ -212,9 +200,6 @@ $ git help
 ```
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-[git-privacy]: https://help.github.com/articles/keeping-your-email-address-private/
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
