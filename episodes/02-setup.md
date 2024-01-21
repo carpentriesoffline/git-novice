@@ -72,8 +72,6 @@ And on Windows:
 $ git config --global core.autocrlf false
 ```
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 Dracula also has to set his favorite text editor, following this table:
 
 | Editor                                | Configuration command | 
@@ -128,7 +126,7 @@ the racist practice of human slavery and the
 more inclusive language.
 
 In 2020, most Git code hosting services transitioned to using `main` as the default
-branch. As an example, any new repository that is opened in GitHub and GitLab default
+branch. As an example, any new repository that is opened in GitHub, GitLab or Gitea default
 to `main`.  However, Git has not yet made the same change.  As a result, local repositories
 must be manually configured have the same main branch name as most cloud services.
 
@@ -200,6 +198,8 @@ More generally, you can get the list of available `git` commands and further res
 ```bash
 $ git help
 ```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

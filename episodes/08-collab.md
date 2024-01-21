@@ -39,11 +39,11 @@ The Owner needs to give the Collaborator access. In your repository page on Gite
 button on the right, select "Collaborators", click "Add Collaborator", and
 then enter your partner's username.
 
-![](fig/github-add-collaborators.png){alt='screenshot of repository page with Settings then Collaborators selected, showing how to add Collaborators in a GitHub repository'}
+![Adding a collaborator. Image credits: Codeberg](fig/gitea-add-collaborators.webp){alt='screenshot of repository page with Settings then Collaborators selected, showing how to add Collaborators in a Gitea repository'}
 
-To accept access to the Owner's repo, the Collaborator
-needs to go to [https://github.com/notifications](https://github.com/notifications)
-or check for email notification. Once there she can accept access to the Owner's repo.
+The Collaborator will automatically get access to the Owner's repository.
+
+<!-- This may change, see https://github.com/go-gitea/gitea/issues/27342 for ongoing discussion -->
 
 Next, the Collaborator needs to download a copy of the Owner's repository to her
 machine. This is called "cloning a repo".
@@ -233,7 +233,7 @@ On Gitea, the Collaborator can go to the repository and click on
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Comment Changes in GitHub
+## Comment Changes in Gitea
 
 The Collaborator has some questions about one line change made by the Owner and
 has some suggestions to propose.
