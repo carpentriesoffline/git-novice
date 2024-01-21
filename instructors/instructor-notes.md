@@ -9,22 +9,26 @@ lets you focus on the more interesting/innovative aspects of your project.
   - It's easy to set up
   - Every copy of a Git repository is a full backup of a project and its history
   - A few easy-to-remember commands are all you need for most day-to-day version control tasks
-  - The [GitHub][github] hosting service provides a web-based collaboration service
+  - The [Gitea][gitea] hosting service provides a web-based collaboration service
 - Two main concepts
   - *commit*: a recorded set of changes in your project's files
   - *repository*: the history of all your project's commits
-- Why use GitHub?
+- Why we are using Gitea now
   - No need for a server: easy to set up
+  - We can use Gitea in an offline setting
+- Why you may want to use GitHub later
+  - The same principles you learn apply to GitHub and other Git-based web services as well
   - GitHub's strong community: your colleagues are probably already there
 
 ## Overall
 
 Version control might be the most important topic we teach, but Git is
-definitely the most complicated tool.  However, GitHub presently dominates the
+definitely the most complicated tool. However, GitHub presently dominates the
 open software repository landscape, so the time and effort required to teach
-fundamental Git is justified and worthwhile.
+fundamental Git is justified and worthwhile. At the same time, using Gitea rather than GitHub in
+the offline setting shows how all Git-based web services fundamentally work the same way.
 
-Because of this complexity, we don't teach novice learners about many
+Because of the complexity of Git, we don't teach novice learners about many
 interesting topics, such as branching, hashes, and commit objects.
 
 Instead we try to convince them that version control is useful for researchers
@@ -36,27 +40,34 @@ working in teams or not, because it is
 
 ## Teaching Notes
 
-- You can "split" your shell so that recent commands remain in view using [this](https://github.com/rgaiacs/swc-shell-split-window) script.
+::::::::::::::::::::::::::::::::::::::::: callout
+Note that some of the resources in these notes refer to websites,
+which will not be accessible in the offline setting.
 
-- Make sure the network is working *before* starting this lesson.
+When you can get access to the internet, 
+download resources for offline use during the workshop.
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+- You can "split" your shell so that recent commands remain in view using [this][shell-split] script.
+
+- Make sure the ad-hoc network is working and all participants can connect *before* starting this lesson.
 
 - Drawings are particularly useful in this lesson: if you have a whiteboard,
   [use it][drawings]!
 
 - Version control is usually not the first subject in a workshop,
-  so get learners to create a GitHub account after the session before.
-  Remind learners that the username and email they use for GitHub (and setup
-  during Git configuration) will be viewable to the public by default.
+  so get learners to create a Gitea account after the session before.
+  Remind learners that the username and email they use for Gitea (and setup
+  during Git configuration as well as on GitHub later) will be viewable to the public by default.
   However, there are many reasons why a learner may not want their personal
-  information viewable, and GitHub has [resources for keeping an email address
-  private][github-privacy].
+  information viewable, and there are resources for keeping an email address private for both Gitea (via profile settings) and [GitHub][github-privacy].
 
 - If some learners are using Windows, there will inevitably be issues
-  merging files with different line endings.  (Even if everyone's on
+  merging files with different line endings. (Even if everyone's on
   some flavor of Unix, different editors may or may not add a
   newline to the last line of a file.) Take a moment to explain
   these issues, since learners will almost certainly trip over them
-  again.  If learners are running into line ending problems, GitHub
+  again. If learners are running into line ending problems, GitHub
   has a [page][github-line-endings] that helps with troubleshooting.
   Specifically, the [section on refreshing a repository][github-line-endings-refresh]
   may be helpful if learners need to change the `core.autocrlf` setting
@@ -64,7 +75,7 @@ working in teams or not, because it is
 
 - We don't use a Git GUI in these notes because we haven't found one that
   installs easily and runs reliably on the three major operating systems, and
-  because we want learners to understand what commands are being run.  That
+  because we want learners to understand what commands are being run. That
   said, instructors should demo a GUI on their desktop at some point during
   this lesson and point learners at [this page][github-gui].
 
@@ -74,7 +85,7 @@ working in teams or not, because it is
 - When appropriate, explain that we teach Git rather than CVS, Subversion, or
   Mercurial primarily because of GitHub's growing popularity: CVS and
   Subversion are now seen as legacy systems, and Mercurial isn't nearly as
-  widely used in the sciences right now.
+  widely used in research right now.
 
 - Further resources:
   
@@ -89,10 +100,10 @@ working in teams or not, because it is
   form of version control.
 
 - Give learners a five-minute overview of what version control does for them
-  before diving into the watch-and-do practicals.  Most of them will have
+  before diving into the watch-and-do practicals. Most of them will have
   tried to co-author papers by emailing files back and forth, or will have
   biked into the office only to realize that the USB key with last night's
-  work is still on the kitchen table.  Instructors can also make jokes about
+  work is still on the kitchen table. Instructors can also make jokes about
   directories with names like "final version", "final version revised",
   "final version with reviewer three's corrections", "really final version",
   and, "come on this really has to be the last version" to motivate version
@@ -111,7 +122,7 @@ working in teams or not, because it is
   another text editor if they're already familiar with it.
 
 - When setting up Git, be very clear what learners have to enter: it is
-  common for them to edit the instructor's details (e.g. email).  Check at
+  common for them to edit the instructor's details (e.g. email). Check at
   the end using `git config --list`.
 
 - When setting up the default branch name, if learners have a Git version
@@ -134,7 +145,7 @@ working in teams or not, because it is
   
   ```bash
   $ mv .git temp_git
-  $ rm -rf  temp_git
+  $ rm -rf temp_git
   ```
   
   The challenge suggests that it is a bad idea to create a Git repo inside another repo.
@@ -147,31 +158,30 @@ working in teams or not, because it is
   challenge does that.
 
 - This is a good moment to show a diff with a graphical diff tool. If you
-  skip it because you're short on time, show it once in GitHub.
+  skip it because you're short on time, show it once in Gitea.
 
-- One thing may cause confusion is recovering old versions.  If, instead of
+- One thing may cause confusion is recovering old versions. If, instead of
   doing `$ git checkout f22b25e mars.txt`, someone does `$ git checkout f22b25e`, they wind up in the "detached HEAD" state and confusion abounds.
-  It's then possible to keep on committing, but things like `git push origin main` a bit later will not give easily comprehensible results.  It also
-  makes it look like commits can be lost.  To "re-attach" HEAD, use
+  It's then possible to keep on committing, but things like `git push origin main` a bit later will not give easily comprehensible results. It also
+  makes it look like commits can be lost. To "re-attach" HEAD, use
   `git checkout main`.
 
 - This is a good moment to show a log within a Git GUI. If you skip it
-  because you're short on time, show it once in GitHub.
+  because you're short on time, show it once in Gitea.
 
 ## [Ignoring Things](../episodes/06-ignore.md)
 
 Just remember that you can use wildcards and regular expressions to ignore a
 particular set of files in `.gitignore`.
 
-## [Remotes in GitHub](../episodes/07-github.md)
+## [Remotes in Gitea](../episodes/07-gitea.md)
 
-- Make it clear that Git and GitHub are not the same thing: Git is an open
-  source version control tool, GitHub is a company that hosts Git
-  repositories in the web and provides a web interface to interact with repos
-  they host.
+- Make it clear that Git and Gitea are not the same thing: Git is an open
+  source version control tool, Gitea is a company that provides Git-based web platforms for self-hosting
+  that provide a web interface to interact with the hosted repos.
 
 - If your learners are advanced enough to be comfortable with SSH, tell them
-  they can use keys to authenticate on GitHub instead of passwords, but don't
+  they can use keys to authenticate on Gitea instead of passwords, but don't
   try to set this up during class: it takes too long, and is a distraction
   from the core ideas of the lesson.
 
@@ -181,39 +191,39 @@ particular set of files in `.gitignore`.
 - When pushing to a remote, the output from Git can vary slightly depending on
   what leaners execute. The lesson displays the output from git if a learner
   executes `git push origin main`. However, some learners might use syntax
-  suggested by GitHub for pushing to a remote with an existing repository,
-  which is `git push -u origin main`. Learners using syntax from GitHub,
-  `git push -u origin main`, will have slightly different output, including
+  suggested by Gitea for pushing to a remote with an existing repository,
+  which is `git push -u origin main`. Learners using this syntax from Gitea,
+  will have slightly different output, including
   the line `Branch main set up to track remote branch main from origin by rebasing.`
 
 ## [Collaborating](../episodes/08-collab.md)
 
 - Decide in advance whether all the learners will work in one shared
   repository, or whether they will work in pairs (or other small groups) in
-  separate repositories.  The former is easier to set up; the latter runs
+  separate repositories. The former is easier to set up; the latter runs
   more smoothly.
 
 - Role playing between two instructors can be effective when teaching the
-  collaboration and conflict sections of the lesson.  One instructor can play
+  collaboration and conflict sections of the lesson. One instructor can play
   the role of the repository owner, while the second instructor can play the
-  role of the collaborator.  If it is possible, try to use two projectors so
-  that the computer screens of both instructors can be seen.  This makes for
+  role of the collaborator. If it is possible, try to use two projectors so
+  that the computer screens of both instructors can be seen. This makes for
   a very clear illustration to the students as to who does what.
 
 - It is also effective to pair up students during this lesson and assign one
   member of the pair to take the role of the owner and the other the role of
-  the collaborator.  In this setup, challenges can include asking the
+  the collaborator. In this setup, challenges can include asking the
   collaborator to make a change, commit it, and push the change to the remote
-  repository so that the owner can then retrieve it, and vice-versa.  The
+  repository so that the owner can then retrieve it, and vice-versa. The
   role playing between the instructors can get a bit "dramatic" in the
   conflicts part of the lesson if the instructors want to inject some humor
   into the room.
 
 - If you don't have two projectors, have two instructors at the front of the
-  room.  Each instructor does their piece of the collaboration demonstration
+  room. Each instructor does their piece of the collaboration demonstration
   on their own computer and then passes the projector cord back and forth
   with the other instructor when it's time for them to do the other part of
-  the collaborative workflow.  It takes less than 10 seconds for each
+  the collaborative workflow. It takes less than 10 seconds for each
   switchover, so it doesn't interrupt the flow of the lesson.
   And of course it helps to give each of the instructors a different-colored
   hat, or put different-colored sticky notes on their foreheads.
@@ -223,7 +233,7 @@ particular set of files in `.gitignore`.
   computer at work:
   
   ```bash
-  $ git clone https://github.com/vlad/planets.git planets-at-work
+  $ git clone http://carpentriesoffline.org:3000/vlad/planets.git planets-at-work
   ```
 
 - It's very common that learners mistype the remote alias or the remote URL
@@ -240,7 +250,7 @@ particular set of files in `.gitignore`.
   repo under a given directory using a second argument:
   
   ```bash
-  $ git clone https://github.com/vlad/planets.git vlad-planet
+  $ git clone http://carpentriesoffline.org:3000/vlad/planets.git vlad-planet
   ```
 
 - The most common mistake is that learners `push` before `pull`ing. If they
@@ -259,8 +269,8 @@ particular set of files in `.gitignore`.
 
 - If you're the only instructor, the best way to create a conflict is:
   
-  - Clone your repo in a different directory, pretending is your computer at
-    work: `git clone https://github.com/vlad/planets.git planets-at-work`.
+  - Clone your repo in a different directory, pretending it is your computer at
+    work: `git clone http://carpentriesoffline.org:3000/vlad/planets.git planets-at-work`.
   - At the office, you make a change, commit and push.
   - At your laptop repo, you (forget to pull and) make a change, commit and
     try to push.
@@ -299,11 +309,11 @@ software-specific license instead.
 ## [Hosting](../episodes/13-hosting.md)
 
 A common concern for learners is having their work publicly available on
-GitHub.  While we encourage open science, sometimes private repos are the
+Gitea (or later, GitHub). While we encourage open science, sometimes private repos are the
 only choice. It's always interesting to mention the options to have
 web-hosted private repositories.
 
-[github]: https://github.com/
+[gitea]: https://gitea.com/
 [drawings]: https://marklodato.github.io/visual-git-guide/index-en.html
 [github-privacy]: https://help.github.com/articles/keeping-your-email-address-private/
 [github-line-endings]: https://docs.github.com/en/github/using-git/configuring-git-to-handle-line-endings
@@ -317,6 +327,5 @@ web-hosted private repositories.
 [git-parable]: https://tom.preston-werner.com/2009/05/19/the-git-parable.html
 [repos-in-repos]: https://github.com/swcarpentry/git-novice/issues/272
 [cc-faq-software]: https://creativecommons.org/faq/#can-i-apply-a-creative-commons-license-to-software
-
-
+[shell-split]: https://github.com/rgaiacs/swc-shell-split-window
 
