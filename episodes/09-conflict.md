@@ -58,7 +58,7 @@ $ cat guacamole.md
 * put one avocado into a bowl.
 ```
 
-and then push the change to GitHub:
+and then push the change to Gitea:
 
 ```bash
 $ git add guacamole.md
@@ -82,13 +82,13 @@ Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
-To https://github.com/alflin/recipes.git
+To http://carpentriesoffline.org:3000/alflin/recipes.git
    29aba7c..dabb4c8  main -> main
 ```
 
 Now let's have the owner
 make a different change to their copy
-*without* updating from GitHub:
+*without* updating from Gitea:
 
 ```bash
 $ nano guacamole.md
@@ -117,16 +117,16 @@ $ git commit -m "Add first step"
  1 file changed, 1 insertion(+)
 ```
 
-but Git won't let us push it to GitHub:
+but Git won't let us push it to Gitea:
 
 ```bash
 $ git push origin main
 ```
 
 ```output
-To https://github.com/alflin/recipes.git
+To http://carpentriesoffline.org:3000/alflin/recipes.git
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/alflin/recipes.git'
+error: failed to push some refs to 'http://carpentriesoffline.org:3000/alflin/recipes.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
@@ -138,7 +138,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
 Git rejects the push because it detects that the remote repository has new updates that have not been
 incorporated into the local branch.
-What we have to do is pull the changes from GitHub,
+What we have to do is pull the changes from Gitea,
 [merge](../learners/reference.md#merge) them into the copy we're currently working in, and then push that.
 Let's start by pulling:
 
@@ -152,7 +152,7 @@ remote: Counting objects: 100% (5/5), done.
 remote: Compressing objects: 100% (1/1), done.
 remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/alflin/recipes
+From http://carpentriesoffline.org:3000/alflin/recipes
  * branch            main     -> FETCH_HEAD
     29aba7c..dabb4c8  main     -> origin/main
 Auto-merging guacamole.md
@@ -225,7 +225,7 @@ $ cat guacamole.md
 
 Our change is preceded by `<<<<<<< HEAD`.
 Git has then inserted `=======` as a separator between the conflicting changes
-and marked the end of the content downloaded from GitHub with `>>>>>>>`.
+and marked the end of the content downloaded from Gitea with `>>>>>>>`.
 (The string of letters and digits after that marker
 identifies the commit we've just downloaded.)
 
@@ -271,14 +271,14 @@ Changes to be committed:
 ```
 
 ```bash
-$ git commit -m "Merge changes from GitHub"
+$ git commit -m "Merge changes from Gitea"
 ```
 
 ```output
-[main 2abf2b1] Merge changes from GitHub
+[main 2abf2b1] Merge changes from Gitea
 ```
 
-Now we can push our changes to GitHub:
+Now we can push our changes to Gitea:
 
 ```bash
 $ git push origin main
@@ -292,7 +292,7 @@ Compressing objects: 100% (6/6), done.
 Writing objects: 100% (6/6), 645 bytes | 645.00 KiB/s, done.
 Total 6 (delta 4), reused 0 (delta 0)
 remote: Resolving deltas: 100% (4/4), completed with 2 local objects.
-To https://github.com/alflin/recipes.git
+To http://carpentriesoffline.org:3000/alflin/recipes.git
    dabb4c8..2abf2b1  main -> main
 ```
 
@@ -310,7 +310,7 @@ remote: Counting objects: 100% (10/10), done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0
 Unpacking objects: 100% (6/6), done.
-From https://github.com/alflin/recipes
+From https://carpentriesoffline.org:3000/alflin/recipes
  * branch            main     -> FETCH_HEAD
     dabb4c8..2abf2b1  main     -> origin/main
 Updating dabb4c8..2abf2b1
@@ -424,9 +424,9 @@ $ git push origin main
 ```
 
 ```output
-To https://github.com/alflin/recipes.git
+To http://carpentriesoffline.org:3000/alflin/recipes.git
  ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'https://github.com/alflin/recipes.git'
+error: failed to push some refs to 'http://carpentriesoffline.org:3000/alflin/recipes.git'
 hint: Updates were rejected because the remote contains work that you do
 hint: not have locally. This is usually caused by another repository pushing
 hint: to the same ref. You may want to first integrate the remote changes
@@ -449,7 +449,7 @@ remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 0 (delta 0)
 Unpacking objects: 100% (3/3), done.
-From https://github.com/alflin/recipes.git
+From http://carpentriesoffline.org:3000/alflin/recipes.git
  * branch            main     -> FETCH_HEAD
    6a67967..439dc8c  main     -> origin/main
 warning: Cannot merge binary files: guacamole.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)

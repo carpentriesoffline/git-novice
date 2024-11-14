@@ -42,16 +42,8 @@ which means that any changes pushed to
 another Git host server
 after this lesson will include this information.
 
-For this lesson, we will be interacting with [GitHub](https://github.com/) and so the email address used should be the same as the one used when setting up your GitHub account. If you are concerned about privacy, please review [GitHub's instructions for keeping your email address private][git-privacy].
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Keeping your email private
-
-If you elect to use a private email address with GitHub, then use GitHub's no-reply email address for the `user.email` value. It looks like `ID+username@users.noreply.github.com`. You can look up your own address in your GitHub [email settings](https://github.com/settings/emails).
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+For this lesson, we will be interacting with [Gitea](http://carpentriesoffline.org:3000) and so the email address used should be the same as the one used when setting up your Gittea account. 
+Gitea is our own Git host that offers similar services to GitHub, BitBucket or GitLab but is hosted on the Carpentries Offline system in the room.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 

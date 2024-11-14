@@ -43,7 +43,7 @@ our computer, we choose the option "Existing Directory":
 
 Although we're not going to use it here, there should be a "version control"
 option on this menu. That is what you would click on if you wanted to
-create a project on your computer by cloning a repository from GitHub.
+create a project on your computer by cloning a repository from Gitea.
 If that option is not present, it probably means that RStudio doesn't know
 where your Git executable is, and you won't be able to progress further
 in this lesson until you tell RStudio where it is.
@@ -58,7 +58,7 @@ and then type:
 - `where git` (Windows)
 
 If there is no version of Git on your computer, please follow the
-[Git installation instructions](https://swcarpentry.github.io/git-novice/#installing-git)
+[Git installation instructions](http://carpentriesoffline.org/lessons/software-carpentry/git-novice//#installing-git)
 in the setup of this lesson to install Git now. Next open your shell or command prompt
 and type `which git` (macOS, Linux), or `where git` (Windows).
 Copy the path to the git executable.
