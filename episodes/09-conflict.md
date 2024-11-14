@@ -25,43 +25,43 @@ different changes to each copy.  Version control helps us manage these
 [resolve](../learners/reference.md#resolve) overlapping changes.
 
 To see how we can resolve conflicts, we must first create one.  The file
-`guacamole.md` currently looks like this in both partners' copies of our `recipes`
+`peasoup.md` currently looks like this in both partners' copies of our `recipes`
 repository:
 
 ```bash
-$ cat guacamole.md
+$ cat peasoup.md
 ```
 
 ```output
-# Guacamole
+# Pea soup
 ## Ingredients
-* avocado
-* lime
-* salt
+* peas
+* spring onions
+* potato
 ## Instructions
 ```
 
 Let's add a line to the collaborator's copy only:
 
 ```bash
-$ nano guacamole.md
-$ cat guacamole.md
+$ nano peasoup.md
+$ cat peasoup.md
 ```
 
 ```output
-# Guacamole
+# Pea soup
 ## Ingredients
-* avocado
-* lime
-* salt
+* peas
+* spring onions
+* potato
 ## Instructions
-* put one avocado into a bowl.
+* put one peas into a bowl.
 ```
 
 and then push the change to Gitea:
 
 ```bash
-$ git add guacamole.md
+$ git add peasoup.md
 $ git commit -m "First step on the instructions"
 ```
 
@@ -91,24 +91,24 @@ make a different change to their copy
 *without* updating from Gitea:
 
 ```bash
-$ nano guacamole.md
-$ cat guacamole.md
+$ nano peasoup.md
+$ cat peasoup.md
 ```
 
 ```output
-# Guacamole
+# Pea soup
 ## Ingredients
-* avocado
-* lime
-* salt
+* peas
+* spring onions
+* potato
 ## Instructions
-* peel the avocados
+* peel the peass
 ```
 
 We can commit the change locally:
 
 ```bash
-$ git add guacamole.md
+$ git add peasoup.md
 $ git commit -m "Add first step"
 ```
 
@@ -155,8 +155,8 @@ Unpacking objects: 100% (3/3), done.
 From http://carpentriesoffline.org:3000/alflin/recipes
  * branch            main     -> FETCH_HEAD
     29aba7c..dabb4c8  main     -> origin/main
-Auto-merging guacamole.md
-CONFLICT (content): Merge conflict in guacamole.md
+Auto-merging peasoup.md
+CONFLICT (content): Merge conflict in peasoup.md
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
@@ -206,20 +206,20 @@ stop us from trampling on our previous work. The conflict is marked in
 in the affected file:
 
 ```bash
-$ cat guacamole.md
+$ cat peasoup.md
 ```
 
 ```output
-# Guacamole
+# Pea soup
 ## Ingredients
-* avocado
-* lime
-* salt
+* peas
+* spring onions
+* potato
 ## Instructions
 <<<<<<< HEAD
-* peel the avocados
+* peel the peass
 =======
-* put one avocado into a bowl.
+* put one peas into a bowl.
 >>>>>>> dabb4c8c450e8475aee9b14b4383acc99f42af1d
 ```
 
@@ -237,25 +237,25 @@ or get rid of the change entirely.
 Let's replace both so that the file looks like this:
 
 ```bash
-$ cat guacamole.md
+$ cat peasoup.md
 ```
 
 ```output
-# Guacamole
+# Pea soup
 ## Ingredients
-* avocado
-* lime
-* salt
+* peas
+* spring onions
+* potato
 ## Instructions
-* peel the avocados and put them into a bowl.
+* squash the peas and put them into a bowl.
 ```
 
 To finish merging,
-we add `guacamole.md` to the changes being made by the merge
+we add `peasoup.md` to the changes being made by the merge
 and then commit:
 
 ```bash
-$ git add guacamole.md
+$ git add peasoup.md
 $ git status
 ```
 
@@ -266,7 +266,7 @@ All conflicts fixed but you are still merging.
 
 Changes to be committed:
 
-	modified:   guacamole.md
+	modified:   peasoup.md
 
 ```
 
@@ -315,24 +315,24 @@ From https://carpentriesoffline.org:3000/alflin/recipes
     dabb4c8..2abf2b1  main     -> origin/main
 Updating dabb4c8..2abf2b1
 Fast-forward
- guacamole.md | 2 +-
+ peasoup.md | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
 We get the merged file:
 
 ```bash
-$ cat guacamole.md
+$ cat peasoup.md
 ```
 
 ```output
-# Guacamole
+# Pea soup
 ## Ingredients
-* avocado
-* lime
-* salt
+* peas
+* spring onions
+* potato
 ## Instructions
-* peel the avocados and put them into a bowl.
+* squash the peas and put them into a bowl.
 ```
 
 We don't need to merge again because Git knows someone has already done that.
@@ -384,39 +384,39 @@ that is stored in version control?
 
 ## Solution
 
-Let's try it. Suppose Alfredo takes a picture of its guacamole and
-calls it `guacamole.jpg`.
+Let's try it. Suppose Alfredo takes a picture of his pea soup and
+calls it `peasoup.jpg`.
 
-If you do not have an image file of guacamole available, you can create
+If you do not have an image file of pea soup available, you can create
 a dummy binary file like this:
 
 ```bash
-$ head --bytes 1024 /dev/urandom > guacamole.jpg
-$ ls -lh guacamole.jpg
+$ head --bytes 1024 /dev/urandom > peasoup.jpg
+$ ls -lh peasoup.jpg
 ```
 
 ```output
--rw-r--r-- 1 alflin 57095 1.0K Mar  8 20:24 guacamole.jpg
+-rw-r--r-- 1 alflin 57095 1.0K Mar  8 20:24 peasoup.jpg
 ```
 
 `ls` shows us that this created a 1-kilobyte file. It is full of
 random bytes read from the special file, `/dev/urandom`.
 
-Now, suppose Alfredo adds `guacamole.jpg` to his repository:
+Now, suppose Alfredo adds `peasoup.jpg` to his repository:
 
 ```bash
-$ git add guacamole.jpg
-$ git commit -m "Add picture of guacamole"
+$ git add peasoup.jpg
+$ git commit -m "Add picture of peasoup"
 ```
 
 ```output
-[main 8e4115c] Add picture of guacamole
+[main 8e4115c] Add picture of peasoup
  1 file changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 guacamole.jpg
+ create mode 100644 peasoup.jpg
 ```
 
 Suppose that Jimmy has added a similar picture in the meantime.
-His is a picture of a guacamole with nachos, but it is *also* called `guacamole.jpg`.
+His is a picture of pea soup with bread, but it is *also* called `peasoup.jpg`.
 When Alfredo tries to push, he gets a familiar message:
 
 ```bash
@@ -452,17 +452,17 @@ Unpacking objects: 100% (3/3), done.
 From http://carpentriesoffline.org:3000/alflin/recipes.git
  * branch            main     -> FETCH_HEAD
    6a67967..439dc8c  main     -> origin/main
-warning: Cannot merge binary files: guacamole.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
-Auto-merging guacamole.jpg
-CONFLICT (add/add): Merge conflict in guacamole.jpg
+warning: Cannot merge binary files: peasoup.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
+Auto-merging peasoup.jpg
+CONFLICT (add/add): Merge conflict in peasoup.jpg
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-The conflict message here is mostly the same as it was for `guacamole.md`, but
+The conflict message here is mostly the same as it was for `peasoup.md`, but
 there is one key additional line:
 
 ```output
-warning: Cannot merge binary files: guacamole.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
+warning: Cannot merge binary files: peasoup.jpg (HEAD vs. 439dc8c08869c342438f6dc4a2b615b05b93c76e)
 ```
 
 Git cannot automatically insert conflict markers into an image as it does
@@ -470,31 +470,31 @@ for text files. So, instead of editing the image file, we must check out
 the version we want to keep. Then we can add and commit this version.
 
 On the key line above, Git has conveniently given us commit identifiers
-for the two versions of `guacamole.jpg`. Our version is `HEAD`, and Jimmy's
+for the two versions of `peasoup.jpg`. Our version is `HEAD`, and Jimmy's
 version is `439dc8c0...`. If we want to use our version, we can use
 `git checkout`:
 
 ```bash
-$ git checkout HEAD guacamole.jpg
-$ git add guacamole.jpg
-$ git commit -m "Use image of just guacamole instead of with nachos"
+$ git checkout HEAD peasoup.jpg
+$ git add peasoup.jpg
+$ git commit -m "Use image of just pea soup instead of with bread"
 ```
 
 ```output
-[main 21032c3] Use image of just guacamole instead of with nachos
+[main 21032c3] Use image of just pea soup instead of with bread
 ```
 
 If instead we want to use Jimmy's version, we can use `git checkout` with
 Jimmy's commit identifier, `439dc8c0`:
 
 ```bash
-$ git checkout 439dc8c0 guacamole.jpg
-$ git add guacamole.jpg
-$ git commit -m "Use image of guacamole with nachos instead of just guacamole"
+$ git checkout 439dc8c0 peasoup.jpg
+$ git add peasoup.jpg
+$ git commit -m "Use image of pea soup with bread instead of just pea soup"
 ```
 
 ```output
-[main da21b34] Use image of guacamole with nachos instead of just guacamole
+[main da21b34] Use image of pea soup with bread instead of just pea soup
 ```
 
 We can also keep *both* images. The catch is that we cannot keep them
@@ -503,29 +503,29 @@ and *rename* it, then add the renamed versions. First, check out each
 image and rename it:
 
 ```bash
-$ git checkout HEAD guacamole.jpg
-$ git mv guacamole.jpg guacamole-only.jpg
-$ git checkout 439dc8c0 guacamole.jpg
-$ mv guacamole.jpg guacamole-nachos.jpg
+$ git checkout HEAD peasoup.jpg
+$ git mv peasoup.jpg peasoup-only.jpg
+$ git checkout 439dc8c0 peasoup.jpg
+$ mv peasoup.jpg peasoup-bread.jpg
 ```
 
-Then, remove the old `guacamole.jpg` and add the two new files:
+Then, remove the old `peasoup.jpg` and add the two new files:
 
 ```bash
-$ git rm guacamole.jpg
-$ git add guacamole-only.jpg
-$ git add guacamole-nachos.jpg
-$ git commit -m "Use two images: just guacamole and with nachos"
+$ git rm peasoup.jpg
+$ git add peasoup-only.jpg
+$ git add peasoup-bread.jpg
+$ git commit -m "Use two images: just pea soup and with bread"
 ```
 
 ```output
-[main 94ae08c] Use two images: just guacamole and with nachos
+[main 94ae08c] Use two images: just pea soup and with bread
  2 files changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 guacamole-nachos.jpg
- rename guacamole.jpg => guacamole-only.jpg (100%)
+ create mode 100644 peasoup-bread.jpg
+ rename peasoup.jpg => peasoup-only.jpg (100%)
 ```
 
-Now both images of guacamole are checked into the repository, and `guacamole.jpg`
+Now both images of pea soup are checked into the repository, and `peasoup.jpg`
 no longer exists.
 
 
