@@ -1,5 +1,5 @@
 ---
-title: Remotes in GitHub
+title: Remotes in Gitea
 teaching: 45
 exercises: 0
 ---
@@ -26,61 +26,65 @@ practice, though, it's easiest to use one copy as a central hub, and to keep it
 on the web rather than on someone's laptop.  Most programmers use hosting
 services like [GitHub](https://github.com), [Bitbucket](https://bitbucket.org) or
 [GitLab](https://gitlab.com/) to hold those main copies; we'll explore the pros
-and cons of this in a [later episode](13-hosting.md).
+and cons of this in a [later episode](13-hosting.md). 
+
+For this Carpentries Offline lesson we'll be using Gitea instead of GitHub, since we can connect to Gitea running on the Carpentries Offline system in the room 
+instead of needing to connect to the internet to get to GitHub.
 
 Let's start by sharing the changes we've made to our current project with the
 world. To this end we are going to create a *remote* repository that will be linked to our *local* repository.
 
 ## 1\. Create a remote repository
 
-Log in to [GitHub](https://github.com), then click on the icon in the top right corner to
-create a new repository called `planets`:
+If you haven't already create an account on [Gitea](http://carpentriesoffline.org:3000). Once created log in to your account, 
+then click on the icon in the top right corner to
+create a new repository called `recipes`:
 
-![](fig/github-create-repo-01.png){alt='Creating a Repository on GitHub (Step 1)'}
+![](fig/github-create-repo-01.png){alt='The first step in creating a repository on Gitea: clicking the "create new" button'}
 
-Name your repository "planets" and then click "Create Repository".
+Name your repository "recipes" and then click "Create Repository".
 
 Note: Since this repository will be connected to a local repository, it needs to be empty. Leave
 "Initialize this repository with a README" unchecked, and keep "None" as options for both "Add
-.gitignore" and "Add a license." See the "GitHub License and README files" exercise below for a full
+.gitignore" and "Add a license." See the "License and README files" exercise below for a full
 explanation of why the repository needs to be empty.
 
-![](fig/github-create-repo-02.png){alt='Creating a Repository on GitHub (Step 2)'}
+![](fig/github-create-repo-02.png){alt='The second step in creating a repository on Gitea: filling out the new repository form to provide the repository name, and specify that neither a readme nor a license should be created'}
 
-As soon as the repository is created, GitHub displays a page with a URL and some
+As soon as the repository is created, Gitea displays a page with a URL and some
 information on how to configure your local repository:
 
-![](fig/github-create-repo-03.png){alt='Creating a Repository on GitHub (Step 3)'}
+![](fig/github-create-repo-03.png){alt='The summary page displayed by Gitea after a new repository has been created. It contains instructions for configuring the new Gitea repository as a git remote'}
 
-This effectively does the following on GitHub's servers:
+This effectively does the following on the Carpentries Offline Gitea server:
 
 ```bash
-$ mkdir planets
-$ cd planets
+$ mkdir recipes
+$ cd recipes
 $ git init
 ```
 
 If you remember back to the earlier [episode](04-changes.md) where we added and
-committed our earlier work on `mars.txt`, we had a diagram of the local repository
+committed our earlier work on `peasoup.md`, we had a diagram of the local repository
 which looked like this:
 
-![](fig/git-staging-area.svg){alt='The Local Repository with Git Staging Area'}
+![](fig/git-staging-area.svg){alt='A diagram showing how "git add" registers changes in the staging area, while "git commit" moves changes from the staging area to the repository'}
 
 Now that we have two repositories, we need a diagram like this:
 
-![](fig/git-freshly-made-github-repo.svg){alt='Freshly-Made GitHub Repository'}
+![](fig/git-freshly-made-github-repo.svg){alt='A diagram illustrating how the Gitea "recipes" repository is also a git repository like our local repository, but that it is currently empty'}
 
-Note that our local repository still contains our earlier work on `mars.txt`, but the
-remote repository on GitHub appears empty as it doesn't contain any files yet.
+Note that our local repository still contains our earlier work on `peasoup.md`, but the
+remote repository on Gitea appears empty as it doesn't contain any files yet.
 
 ## 2\. Connect local to remote repository
 
 Now we connect the two repositories.  We do this by making the
-GitHub repository a [remote](../learners/reference.md#remote) for the local repository.
-The home page of the repository on GitHub includes the URL string we need to
+Gitea repository a [remote](../learners/reference.md#remote) for the local repository.
+The home page of the repository on Gitea includes the URL string we need to
 identify it:
 
-![](fig/github-find-repo-string.png){alt='Where to Find Repository URL on GitHub'}
+![](fig/github-change-repo-string.png){alt='A screenshot showing that clicking on "SSH" will make Gitea provide the SSH URL for a repository instead of the HTTPS URL'}
 
 Click on the 'SSH' link to change the [protocol](../learners/reference.md#protocol) from HTTPS to SSH.
 
@@ -90,26 +94,26 @@ Click on the 'SSH' link to change the [protocol](../learners/reference.md#protoc
 
 We use SSH here because, while it requires some additional configuration, it is a
 security protocol widely used by many applications.  The steps below describe SSH at a
-minimum level for GitHub. 
+minimum level for Gitea.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-![](fig/github-change-repo-string.png){alt='Changing the Repository URL on GitHub'}
+![](fig/github-find-repo-string.png){alt='Clicking the "Copy to Clipboard" button on Gitea to obtain the repository\'s URL'}
 
-Copy that URL from the browser, go into the local `planets` repository, and run
+Copy that URL from the browser, go into the local `recipes` repository, and run
 this command:
 
 ```bash
-$ git remote add origin git@github.com:vlad/planets.git
+$ git remote add origin git@carpentriesoffline.org:alflin/recipes.git
 ```
 
-Make sure to use the URL for your repository rather than Vlad's: the only
-difference should be your username instead of `vlad`.
+Make sure to use the URL for your repository rather than Alfredo's: the only
+difference should be your username instead of `alflin`.
 
 `origin` is a local name used to refer to the remote repository. It could be called
 anything, but `origin` is a convention that is often used by default in git
-and GitHub, so it's helpful to stick with this unless there's a reason not to.
+and Gitea, so it's helpful to stick with this unless there's a reason not to.
 
 We can check that the command has worked by running `git remote -v`:
 
@@ -118,8 +122,8 @@ $ git remote -v
 ```
 
 ```output
-origin   git@github.com:vlad/planets.git (fetch)
-origin   git@github.com:vlad/planets.git (push)
+origin   git@carpentriesoffline.org:alflin/recipes.git (fetch)
+origin   git@carpentriesoffline.org:alflin/recipes.git (push)
 ```
 
 We'll discuss remotes in more detail in the next episode, while
@@ -127,15 +131,15 @@ talking about how they might be used for collaboration.
 
 ## 3\. SSH Background and Setup
 
-Before Dracula can connect to a remote repository, he needs to set up a way for his computer to authenticate with GitHub so it knows it's him trying to connect to his remote repository.
+Before Alfredo can connect to a remote repository, he needs to set up a way for his computer to authenticate with Gitea so it knows it's him trying to connect to his remote repository.
 
 We are going to set up the method that is commonly used by many different services to authenticate access on the command line.  This method is called Secure Shell Protocol (SSH).  SSH is a cryptographic network protocol that allows secure communication between computers using an otherwise insecure network.
 
 SSH uses what is called a key pair. This is two keys that work together to validate access. One key is publicly known and called the public key, and the other key called the private key is kept private. Very descriptive names.
 
-You can think of the public key as a padlock, and only you have the key (the private key) to open it. You use the public key where you want a secure method of communication, such as your GitHub account.  You give this padlock, or public key, to GitHub and say "lock the communications to my account with this so that only computers that have my private key can unlock communications and send git commands as my GitHub account."
+You can think of the public key as a padlock, and only you have the key (the private key) to open it. You use the public key where you want a secure method of communication, such as your Gitea account.  You give this padlock, or public key, to Gitea and say "lock the communications to my account with this so that only computers that have my private key can unlock communications and send git commands as my Gitea account."
 
-What we will do now is the minimum required to set up the SSH keys and add the public key to a GitHub account.
+What we will do now is the minimum required to set up the SSH keys and add the public key to a Gitea account.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -167,21 +171,21 @@ ls -al ~/.ssh
 
 Your output is going to look a little different depending on whether or not SSH has ever been set up on the computer you are using.
 
-Dracula has not set up SSH on his computer, so his output is
+Alfredo has not set up SSH on his computer, so his output is
 
 ```output
-ls: cannot access '/c/Users/Vlad Dracula/.ssh': No such file or directory
+ls: cannot access '/c/Users/Alfredo/.ssh': No such file or directory
 ```
 
-If SSH has been set up on the computer you're using, the public and private key pairs will be listed. The file names are either `id_ed25519`/`id_ed25519.pub` or `id_rsa`/`id_rsa.pub` depending on how the key pairs were set up.  
-Since they don't exist on Dracula's computer, he uses this command to create them.
+If SSH has been set up on the computer you're using, the public and private key pairs will be listed. The file names are either `id_ed25519`/`id_ed25519.pub` or `id_rsa`/`id_rsa.pub` depending on how the key pairs were set up.
+Since they don't exist on Alfredo's computer, he uses this command to create them.
 
 ### 3\.1 Create an SSH key pair
 
-To create an SSH key pair Vlad uses this command, where the `-t` option specifies which type of algorithm to use and `-C` attaches a comment to the key (here, Vlad's email):
+To create an SSH key pair Alfredo uses this command, where the `-t` option specifies which type of algorithm to use and `-C` attaches a comment to the key (here, Alfredo's email):
 
 ```bash
-$ ssh-keygen -t ed25519 -C "vlad@tran.sylvan.ia"
+$ ssh-keygen -t ed25519 -C "a.linguini@ratatouille.fr"
 ```
 
 If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
@@ -189,17 +193,19 @@ If you are using a legacy system that doesn't support the Ed25519 algorithm, use
 
 ```output
 Generating public/private ed25519 key pair.
-Enter file in which to save the key (/c/Users/Vlad Dracula/.ssh/id_ed25519):
+Enter file in which to save the key (/c/Users/Alfredo/.ssh/id_ed25519):
 ```
 
 We want to use the default file, so just press <kbd>Enter</kbd>.
 
 ```output
-Created directory '/c/Users/Vlad Dracula/.ssh'.
+Created directory '/c/Users/Alfredo/.ssh'.
 Enter passphrase (empty for no passphrase):
 ```
 
-Now, it is prompting Dracula for a passphrase.  Since he is using his lab's laptop that other people sometimes have access to, he wants to create a passphrase.  Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option.
+Now, it is prompting Alfredo for a passphrase. Since he is using his kitchen's laptop that other people sometimes have access to, he wants to create a passphrase. Be sure to use something memorable or save your passphrase somewhere, as there is no "reset my password" option.
+Note that, when typing a passphrase on a terminal, there won't be any visual feedback of your typing.
+This is normal: your passphrase will be recorded even if you see nothing changing on your screen.
 
 ```output
 Enter same passphrase again:
@@ -208,10 +214,10 @@ Enter same passphrase again:
 After entering the same passphrase a second time, we receive the confirmation
 
 ```output
-Your identification has been saved in /c/Users/Vlad Dracula/.ssh/id_ed25519
-Your public key has been saved in /c/Users/Vlad Dracula/.ssh/id_ed25519.pub
+Your identification has been saved in /c/Users/Alfredo/.ssh/id_ed25519
+Your public key has been saved in /c/Users/Alfredo/.ssh/id_ed25519.pub
 The key fingerprint is:
-SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o vlad@tran.sylvan.ia
+SHA256:SMSPIStNyA00KPxuYu94KpZgRAYjgt9g4BA4kFy3g1o a.linguini@ratatouille.fr
 The key's randomart image is:
 +--[ED25519 256]--+
 |^B== o.          |
@@ -236,31 +242,31 @@ ls -al ~/.ssh
 ```
 
 ```output
-drwxr-xr-x 1 Vlad Dracula 197121   0 Jul 16 14:48 ./
-drwxr-xr-x 1 Vlad Dracula 197121   0 Jul 16 14:48 ../
--rw-r--r-- 1 Vlad Dracula 197121 419 Jul 16 14:48 id_ed25519
--rw-r--r-- 1 Vlad Dracula 197121 106 Jul 16 14:48 id_ed25519.pub
+drwxr-xr-x 1 Alfredo   197121   0 Jul 16 14:48 ./
+drwxr-xr-x 1 Alfredo   197121   0 Jul 16 14:48 ../
+-rw-r--r-- 1 Alfredo   197121 419 Jul 16 14:48 id_ed25519
+-rw-r--r-- 1 Alfredo   197121 106 Jul 16 14:48 id_ed25519.pub
 ```
 
-### 3\.2 Copy the public key to GitHub
+### 3\.2 Copy the public key to Gitea
 
-Now we have a SSH key pair and we can run this command to check if GitHub can read our authentication.
+Now we have a SSH key pair and we can run this command to check if Gitea can read our authentication.
 
 ```bash
-ssh -T git@github.com
+ssh -T git@carpentriesoffline.org
 ```
 
 ```output
-The authenticity of host 'github.com (192.30.255.112)' can't be established.
+The authenticity of host 'carpentriesoffline.org (192.168.1.1)' can't be established.
 RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
 This key is not known by any other names
 Are you sure you want to continue connecting (yes/no/[fingerprint])? y
 Please type 'yes', 'no' or the fingerprint: yes
-Warning: Permanently added 'github.com' (RSA) to the list of known hosts.
-git@github.com: Permission denied (publickey).
+Warning: Permanently added 'carpentriesoffline.org' (RSA) to the list of known hosts.
+git@carpentriesoffline.org: Permission denied (publickey).
 ```
 
-Right, we forgot that we need to give GitHub our public key!
+Right, we forgot that we need to give Gitea our public key!
 
 First, we need to copy the public key.  Be sure to include the `.pub` at the end, otherwise you're looking at the private key.
 
@@ -269,22 +275,22 @@ cat ~/.ssh/id_ed25519.pub
 ```
 
 ```output
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI vlad@tran.sylvan.ia
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDmRA3d51X0uu9wXek559gfn6UFNF69yZjChyBIU2qKI a.linguini@ratatouille.fr
 ```
 
-Now, going to GitHub.com, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings," then on the
-settings page, click "SSH and GPG keys," on the left side "Account settings" menu.  Click the "New SSH key" button on the right side. Now,
-you can add the title (Dracula uses the title "Vlad's Lab Laptop" so he can remember where the original key pair
+Now, going to Gitea, click on your profile icon in the top right corner to get the drop-down menu.  Click "Settings", then on the
+settings page, click "SSH and GPG keys", on the left side "Access" menu. Click the "New SSH key" button on the right side. Now,
+you can add the title (Alfredo uses the title "Alfredo's Kitchen Laptop" so he can remember where the original key pair
 files are located), paste your SSH key into the field, and click the "Add SSH key" to complete the setup.
 
 Now that we've set that up, let's check our authentication again from the command line.
 
 ```bash
-$ ssh -T git@github.com
+$ ssh -T git@carpentriesoffline.org
 ```
 
 ```output
-Hi Vlad! You've successfully authenticated, but GitHub does not provide shell access.
+Hi Alfredo! You've successfully authenticated, but Gitea does not provide shell access.
 ```
 
 Good! This output confirms that the SSH key works as intended. We are now ready to push our work to the remote repository.
@@ -292,13 +298,13 @@ Good! This output confirms that the SSH key works as intended. We are now ready 
 ## 4\. Push local changes to a remote
 
 Now that authentication is setup, we can return to the remote.  This command will push the changes from
-our local repository to the repository on GitHub:
+our local repository to the repository on Gitea:
 
 ```bash
 $ git push origin main
 ```
 
-Since Dracula set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it
+Since Alfredo set up a passphrase, it will prompt him for it.  If you completed advanced settings for your authentication, it
 will not prompt for a passphrase.
 
 ```output
@@ -309,7 +315,7 @@ Compressing objects: 100% (11/11), done.
 Writing objects: 100% (16/16), 1.45 KiB | 372.00 KiB/s, done.
 Total 16 (delta 2), reused 0 (delta 0)
 remote: Resolving deltas: 100% (2/2), done.
-To https://github.com/vlad/planets.git
+To https://carpentriesoffline.org:3000/alflin/recipes.git
  * [new branch]      main -> main
 ```
 
@@ -364,7 +370,7 @@ to make Git default to using the terminal for usernames and passwords.
 
 Our local and remote repositories are now in this state:
 
-![](fig/github-repo-after-first-push.svg){alt='GitHub Repository After First Push'}
+![](fig/github-repo-after-first-push.svg){alt='A diagram showing how "git push origin" will push changes from the local repository to the remote, making the remote repository an exact copy of the local repository.'}
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -386,21 +392,21 @@ $ git pull origin main
 ```
 
 ```output
-From https://github.com/vlad/planets
+From http://carpentriesoffline.org:3000/alflin/recipes
  * branch            main     -> FETCH_HEAD
 Already up-to-date.
 ```
 
 Pulling has no effect in this case because the two repositories are already
 synchronized.  If someone else had pushed some changes to the repository on
-GitHub, though, this command would download them to our local repository.
+Gitea, though, this command would download them to our local repository.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## GitHub GUI
+## Gitea GUI
 
-Browse to your `planets` repository on GitHub.
-Underneath the Code button, find and click on the text that says "XX commits" (where "XX" is some number).
+Browse to your `recipes` repository on Gitea.
+Under the Code tab, find and click on the text that says "XX commits" (where "XX" is some number).
 Hover over, and click on, the three buttons to the right of each commit.
 What information can you gather/explore from these buttons?
 How would you get that same information in the shell?
@@ -433,32 +439,32 @@ afterwards!
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
-## Uploading files directly in GitHub browser
+## Uploading files directly in Gitea browser
 
-Github also allows you to skip the command line and upload files directly to
+Gitea also allows you to skip the command line and upload files directly to
 your repository without having to leave the browser. There are two options.
 First you can click the "Upload files" button in the toolbar at the top of the
 file tree. Or, you can drag and drop files from your desktop onto the file
-tree. You can read more about this [on this GitHub page](https://help.github.com/articles/adding-a-file-to-a-repository/).
+tree. 
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## GitHub Timestamp
+## Gitea Timestamp
 
-Create a remote repository on GitHub. Push the contents of your local
+Create a remote repository on Gitea. Push the contents of your local
 repository to the remote. Make changes to your local repository and push these
-changes. Go to the repo you just created on GitHub and check the
-[timestamps](../learners/reference.md#timestamp) of the files. How does GitHub
+changes. Go to the repo you just created on Gitea and check the
+[timestamps](../learners/reference.md#timestamp) of the files. How does Gitea
 record times, and why?
 
 :::::::::::::::  solution
 
 ## Solution
 
-GitHub displays timestamps in a human readable relative format (i.e. "22 hours ago" or "three
+Gitea displays timestamps in a human readable relative format (i.e. "22 hours ago" or "three
 weeks ago"). However, if you hover over the timestamp, you can see the exact time at which the
 last change to the file occurred.
 
@@ -491,17 +497,17 @@ Commit only updates your local repository.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## GitHub License and README files
+## Gitea License and README files
 
-In this episode we learned about creating a remote repository on GitHub, but when you initialized
-your GitHub repo, you didn't add a README.md or a license file. If you had, what do you think
+In this episode we learned about creating a remote repository on Gitea, but when you initialized
+your Gitea repo, you didn't add a README.md or a license file. If you had, what do you think
 would have happened when you tried to link your local and remote repositories?
 
 :::::::::::::::  solution
 
 ## Solution
 
-In this case, we'd see a merge conflict due to unrelated histories. When GitHub creates a
+In this case, we'd see a merge conflict due to unrelated histories. When Gitea creates a
 README.md file, it performs a commit in the remote repository. When you try to pull the remote
 repository to your local repository, Git detects that they have histories that do not share a
 common origin and refuses to merge.
@@ -516,7 +522,7 @@ remote: Enumerating objects: 3, done.
 remote: Counting objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
-From https://github.com/vlad/planets
+From http://carpentriesoffline.org:3000/alflin/recipes
  * branch            main     -> FETCH_HEAD
  * [new branch]      main     -> origin/main
 fatal: refusing to merge unrelated histories
@@ -531,7 +537,7 @@ $ git pull --allow-unrelated-histories origin main
 ```
 
 ```output
-From https://github.com/vlad/planets
+From http://carpentriesoffline.org:3000/alflin/recipes
  * branch            main     -> FETCH_HEAD
 Merge made by the 'recursive' strategy.
 README.md | 1 +
@@ -551,5 +557,3 @@ create mode 100644 README.md
 - `git pull` copies changes from a remote repository to a local repository.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
